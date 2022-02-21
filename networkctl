@@ -1,9 +1,9 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 setstatic () {
 	nmcli con mod "Connexion filaire 1" ipv4.addresses 172.17.1.148/24
 	nmcli con mod "Connexion filaire 1" ipv4.gateway 172.17.255.253
-	nmcli con mod "Connexion filaire 1" ipv4.dns “172.12.0.1,8.8.8.8”
+	nmcli con mod "Connexion filaire 1" ipv4.dns "172.12.0.1 8.8.8.8"
 	nmcli con mod "Connexion filaire 1" ipv4.method manual
 	nmcli con down "Connexion filaire 1"
 	nmcli con up "Connexion filaire 1"
@@ -13,6 +13,7 @@ setdhcp () {
         nmcli con mod "Connexion filaire 1" ipv4.gateway ""
 	nmcli con mod "Connexion filaire 1" ipv4.addresses ""
 	nmcli con mod "Connexion filaire 1" ipv4.method auto
+	nmcli con mod "Connexion filaire 1" ipv4.dns "8.8.8.8"
 	nmcli con down "Connexion filaire 1"
         nmcli con up "Connexion filaire 1"
 }
